@@ -1,17 +1,22 @@
 (function(){
-    'use string';
+'usar string'
+    angular.module('todoApp', [])
+    .controller('formMenu', formMenu)
+    formMenu.$inject = ['$scope']
 
-    angular.module('lunchckeck', [])
-    .controller('lunchcheckcontroller', lunchcheckcontroller)
-       function lunchcheckcontroller($scope) {
-           $scope.bt = function (){
-              $scope.dish = $scope.lunckmenu.split(' ');
-              if ($scope.dish.length <= 3) {
-                  $scope.message = "enjoy";
-              }
-              else if ($scope.dish.length >3) {
+    function formMenu($scope) {
+        $scope.lunchMenu = "";
+        $scope.message = "";
+        
+        $scope.showMessage = function() {
+            var counter = $scope.lunchMenu.split(' ');
+            if ($scope.lunchMenu === "") {
+                $scope.message = "please enter date firt";
+            } else if (counter.length <= 3) {
+                $scope.message = "enjoy";
+            } else if (counter.length > 3) {
                 $scope.message = "too much";
-              }
-           }
-       } 
+            }
+        }
+    }
 })()
